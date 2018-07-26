@@ -54,7 +54,7 @@ function onListening () {
 
 app.use(express.static('webroot'))
 
-app.post('/webhook/', function(req, res){
+app.get('/webhook/', function(req, res){
   sendMessage(req.body)
   res.header("Content-Type", "text/plain");
   res.header("statusCode", "200");

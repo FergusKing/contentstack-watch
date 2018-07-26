@@ -55,9 +55,9 @@ function onListening () {
 app.use(express.static('webroot'))
 
 app.post('/watch', function(req, res){
-  sendMessage('winner winner')
+  sendMessage(req.body)
   res.status(200)
-  res.send(req.body)
+  res.send()
 })
 
 var clients = []

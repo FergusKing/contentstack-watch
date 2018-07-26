@@ -4,8 +4,10 @@
   "description": "A watch function for use in a chrome ext to reload the page when a contentstack asset changes",
   "main": "app.js",
   "scripts": {
-    "start": "node app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run production",
+    "heroku-prebuild": "npm install",
+    "dev": "nodemon app",
+    "production": "node app"
   },
   "repository": {
     "type": "git",

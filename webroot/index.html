@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket test</title>
+    <script src="/socket.io.slim.js"></script>
+    <script>
+      window.onload = function(){
+        var socket = io();
+        socket.on('update', function(msg){
+          console.log(msg)
+        });
+        var pageRef = document.body.getAttribute('data-pageref');
+        socket.emit('setup', pageRef)
+      }
+    </script>
+  </head>
+  <body data-pageref="blt494edefe0765e778">
+    <form method="POST" action="/watch">
+      <input name="testStr">
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>

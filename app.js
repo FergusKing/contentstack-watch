@@ -56,8 +56,11 @@ app.use(express.static('webroot'))
 
 app.post('/watch', function(req, res){
   sendMessage(req.body)
+  res.header("Content-Type", "text/plain");
+  res.header("statusCode", "200");
+  res.set("Connection", "close");
   res.status(200)
-  res.send()
+  res.send('sucess')
 })
 
 var clients = []
@@ -84,9 +87,7 @@ io.on('connection', function(socket){
 });
 
 function sendMessage(msg){
-  console.log(clients)
   clients.forEach(soc => {
-    console.log(msg)
     soc.socket.emit('update', msg)
   });
 }

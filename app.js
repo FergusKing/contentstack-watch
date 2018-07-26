@@ -55,7 +55,7 @@ function onListening () {
 app.use(express.static('webroot'))
 
 app.post('/webhook/', function(req, res){
-  sendMessage(req.body)
+  sendMessage('happy days')
   res.header("Content-Type", "text/plain");
   res.header("statusCode", "200");
   res.set("Connection", "close");

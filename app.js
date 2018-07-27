@@ -1,6 +1,7 @@
 const http = require('http')
 const debug = require('debug')('contentstack-watch:server')
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 
 
@@ -51,16 +52,16 @@ function onListening () {
     debug('Listening on ' + bind)
 }
 
-
+app.use(bodyParser.json())
 app.use(express.static('webroot'))
 
-app.post('/webhook/', function(req, res){
-  sendMessage('happy days')
+app.post('/webhook', function(req, res){
   res.header("Content-Type", "text/plain");
   res.header("statusCode", "200");
   res.set("Connection", "close");
   res.status(200)
   res.send('sucess')
+  sendMessage(req.body)
 })
 
 var clients = []

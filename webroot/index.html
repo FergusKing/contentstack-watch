@@ -8,6 +8,7 @@
         var socket = io();
         socket.on('update', function(msg){
           console.log(msg)
+          document.querySelector('#data').value = JSON.stringify(msg)
         });
         var pageRef = document.body.getAttribute('data-pageref');
         socket.emit('setup', pageRef)
@@ -18,6 +19,7 @@
     <form method="POST" action="/watch">
       <input name="testStr">
       <input type="submit" value="submit">
+      <textarea id="data"></textarea>
     </form>
   </body>
 </html>

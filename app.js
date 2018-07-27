@@ -5,6 +5,10 @@ const bodyParser = require('body-parser')
 const app = express()
 
 
+app.use(bodyParser.json())
+app.use(express.static('webroot'))
+
+
 const port = normalizePort(process.env.PORT || '3000')
 app.set('port', port)
 var server = http.createServer(app)
@@ -51,9 +55,6 @@ function onListening () {
         : 'port ' + addr.port
     debug('Listening on ' + bind)
 }
-
-app.use(bodyParser.json())
-app.use(express.static('webroot'))
 
 app.post('/webhook', function(req, res){
   res.header("Content-Type", "text/plain");

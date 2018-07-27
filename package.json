@@ -1,6 +1,6 @@
 {
   "name": "contentstack-watch",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A watch function for use in a chrome ext to reload the page when a contentstack asset changes",
   "main": "app.js",
   "scripts": {

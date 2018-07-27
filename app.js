@@ -62,7 +62,7 @@ app.post('/webhook', function(req, res){
   res.set("Connection", "close");
   res.status(200)
   res.send('sucess')
-  sendMessage(req.body)
+  sendMessage(req.body.data.entry.uid)
 })
 
 var clients = []
@@ -88,9 +88,11 @@ io.on('connection', function(socket){
 
 });
 
-function sendMessage(msg){
+function sendMessage(uid){
   clients.forEach(soc => {
-    soc.socket.emit('update', msg)
+    if(uid === soc.pageref){
+      soc.socket.emit('update', uid)
+    }
   });
 }
 
